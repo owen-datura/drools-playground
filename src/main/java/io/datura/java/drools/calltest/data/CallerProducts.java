@@ -6,7 +6,7 @@ public class CallerProducts {
 	private EnumSet<Products> ownedProducts;
 
 	public enum Products {
-		SERVERS, SWITCHES_GIG_E, SWITCHES_10_GIG_E, INTRUSION_MONITORING, VOIP_PHONES
+		SERVERS, EC2_INSTANCES, SWITCHES_GIG_E, SWITCHES_10_GIG_E, INTRUSION_MONITORING, VOIP_PHONES
 	}
 
 	// on init, assume no products
@@ -16,5 +16,13 @@ public class CallerProducts {
 
 	public void addProduct(Products p) {
 		ownedProducts.add(p);
+	}
+	
+	public int getNumProducts() {
+		return ownedProducts.size();
+	}
+	
+	public boolean hasProduct( Products p ) {
+		return ownedProducts.contains(p);
 	}
 }
