@@ -6,7 +6,7 @@ public class CallerProducts {
 	private EnumSet<Products> ownedProducts;
 
 	public enum Products {
-		SERVERS, EC2_INSTANCES, SWITCHES_GIG_E, SWITCHES_10_GIG_E, INTRUSION_MONITORING, VOIP_PHONES
+		ON_PREM_SERVERS, EC2_INSTANCES, SWITCHES_GIG_E, SWITCHES_10_GIG_E, INTRUSION_MONITORING, VOIP_PHONES
 	}
 
 	// on init, assume no products
@@ -24,5 +24,14 @@ public class CallerProducts {
 	
 	public boolean hasProduct( Products p ) {
 		return ownedProducts.contains(p);
+	}
+	
+	public EnumSet<Products> getOwnedProducts() {
+		return ownedProducts;
+	}
+
+	@Override
+	public String toString() {
+		return "CallerProducts [ownedProducts=" + ownedProducts + "]";
 	}
 }

@@ -8,7 +8,12 @@ public class Call {
 	private LocalDateTime callTime;
 	private CallerDemographics callerDemo;
 	private CallerProducts products;
-
+	private CallRank callRank;
+	
+	public enum CallRank {
+		FULLY_QUALIFIED, RAINY_DAY, UNQUALIFIED, UPSELL_VIRTUAL_MACHINES
+	}
+	
 	public Call() {
 		this(null);
 	}
@@ -17,6 +22,7 @@ public class Call {
 		this.callTime = callTime != null ? callTime : LocalDateTime.now();
 		callerDemo = new CallerDemographics();
 		products = new CallerProducts();
+		callRank = CallRank.UNQUALIFIED;
 	}
 
 	public LocalDateTime getCallTime() {
@@ -29,6 +35,20 @@ public class Call {
 
 	public CallerProducts getProducts() {
 		return products;
+	}
+
+	public CallRank getCallRank() {
+		return callRank;
+	}
+
+	public void setCallRank(CallRank callRank) {
+		this.callRank = callRank;
+	}
+
+	@Override
+	public String toString() {
+		return "Call [callTime=" + callTime + ", callerDemo=" + callerDemo + ", products=" + products + ", callRank="
+				+ callRank + "]";
 	}
 
 	public static LocalDateTime getRandomizedTime() {

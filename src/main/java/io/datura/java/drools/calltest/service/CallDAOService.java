@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.ArrayList;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import io.datura.java.drools.calltest.data.Call;
 import io.datura.java.drools.calltest.data.CallerDemographics;
@@ -13,7 +13,7 @@ import io.datura.java.drools.calltest.data.CallerDemographics.Region;
 import io.datura.java.drools.calltest.data.CallerProducts.Products;
 import io.datura.java.drools.calltest.data.CallerProducts;
 
-@Component
+@Service
 public class CallDAOService {
 	private static Collection<Call> calls = new ArrayList<>();
 	
@@ -35,7 +35,8 @@ public class CallDAOService {
 			cd1.setCompanySize(CompanySize.TEN_TO_ONE_HUNDRED);
 			// get + set the product data
 			CallerProducts cp1 = c1.getProducts();
-			cp1.addProduct(Products.SERVERS);
+			cp1.addProduct(Products.ON_PREM_SERVERS);
+			cp1.addProduct(Products.SWITCHES_10_GIG_E);
 			calls.add(c1);
 		}
 
@@ -59,7 +60,7 @@ public class CallDAOService {
 		{
 			Call c3 = new Call(Call.getRandomizedTime());
 			CallerDemographics cd3 = c3.getCallerDemo();
-			cd3.setFirstName("Amy");
+			cd3.setFirstName("Aimee");
 			cd3.setLastName("Mann");
 			cd3.setPhoneNumber("555-383-1192");
 			cd3.setEmailAddress("kittenluvr227@gmail.com");
@@ -88,6 +89,21 @@ public class CallDAOService {
 			cp4.addProduct(Products.VOIP_PHONES);
 			cp4.addProduct(Products.SWITCHES_GIG_E);
 			calls.add(c4);
+		}
+		
+		{
+			Call c5 = new Call(Call.getRandomizedTime());
+			CallerDemographics cd5 = c5.getCallerDemo();
+			cd5.setFirstName("Slavoj");
+			cd5.setLastName("Zizek");
+			cd5.setPhoneNumber("555-223-8972");
+			cd5.setEmailAddress("idprefernotto@analysis.co.uk");
+			cd5.setCallingRegion(Region.SOUTH_AMERICA);
+			cd5.setCompanySize(CompanySize.ONE_TO_TEN);
+			// get + set the product data
+			CallerProducts cp5 = c5.getProducts();
+			cp5.addProduct(Products.ON_PREM_SERVERS);
+			calls.add(c5);
 		}
 	}
 }

@@ -1,11 +1,26 @@
 import io.datura.java.drools.calltest.data.Call;
 import io.datura.java.drools.calltest.data.CallerDemographics;
+import io.datura.java.drools.calltest.data.CallerProducts;
 dialect "java"
 
-rule "Example Rule"
+rule "Large Company With Networking"
 	when
 		$c : Call()
-		$d : CallerDemographics( firstName == "George" )
+		CallerDemographics( companySize == CallerDemographics.CompanySize.ONE_HUNDRED_TO_1000 ||
+			companySize == CallerDemographics.CompanySize.OVER_1000 )
+		CallerProducts( ownedProducts contains CallerProducts.Products.SWITCHES_GIG_E ||
+			ownedProducts contains CallerProducts.Products.SWITCHES_10_GIG_E )		
 	then
 		$c.setCallRank(Call.CallRank.FULLY_QUALIFIED);
+end
+
+rule "American Company With On-Premises Servers"
+	when
+		$c : Call()
+		CallerDemographics( callingRegion == CallerDemographics.Region.NORTH_AMERICA ||
+			callingRegion == CallerDemographics.Region.CENTRAL_AMERICA ||
+			callingRegion == CallerDemographics.Region.SOUTH_AMERICA )
+		CallerProducts( ownedProducts contains CallerProducts.Products.ON_PREM_SERVERS )
+	then
+		$c.setCallRank(Call.CallRank.UPSELL_VIRTUAL_MACHINES);
 end
