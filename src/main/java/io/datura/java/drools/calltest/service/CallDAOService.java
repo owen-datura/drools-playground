@@ -16,15 +16,17 @@ import io.datura.java.drools.calltest.data.CallerProducts;
 @Service
 public class CallDAOService {
 	private static Collection<Call> calls = new ArrayList<>();
-	
+
 	public Collection<Call> getAllCalls() {
 		return Collections.unmodifiableCollection(calls);
 	}
-	
+
 	/* Manually define some data. */
 	static {
+		long curId = 1l;
+
 		{
-			Call c1 = new Call(Call.getRandomizedTime());
+			Call c1 = new Call(curId++, Call.getRandomizedTime());
 			// get + set the demo data
 			CallerDemographics cd1 = c1.getCallerDemo();
 			cd1.setFirstName("George");
@@ -41,7 +43,7 @@ public class CallDAOService {
 		}
 
 		{
-			Call c2 = new Call(Call.getRandomizedTime());
+			Call c2 = new Call(curId++, Call.getRandomizedTime());
 			// get + set the demo data
 			CallerDemographics cd2 = c2.getCallerDemo();
 			cd2.setFirstName("Robert");
@@ -58,7 +60,7 @@ public class CallDAOService {
 		}
 
 		{
-			Call c3 = new Call(Call.getRandomizedTime());
+			Call c3 = new Call(curId++, Call.getRandomizedTime());
 			CallerDemographics cd3 = c3.getCallerDemo();
 			cd3.setFirstName("Aimee");
 			cd3.setLastName("Mann");
@@ -75,7 +77,7 @@ public class CallDAOService {
 		}
 
 		{
-			Call c4 = new Call(Call.getRandomizedTime());
+			Call c4 = new Call(curId++, Call.getRandomizedTime());
 			CallerDemographics cd4 = c4.getCallerDemo();
 			cd4.setFirstName("Phil");
 			cd4.setLastName("Spector");
@@ -90,9 +92,9 @@ public class CallDAOService {
 			cp4.addProduct(Products.SWITCHES_GIG_E);
 			calls.add(c4);
 		}
-		
+
 		{
-			Call c5 = new Call(Call.getRandomizedTime());
+			Call c5 = new Call(curId++, Call.getRandomizedTime());
 			CallerDemographics cd5 = c5.getCallerDemo();
 			cd5.setFirstName("Slavoj");
 			cd5.setLastName("Zizek");
