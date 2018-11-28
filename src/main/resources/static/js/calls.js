@@ -24,3 +24,26 @@ document.getElementById('btnCallReset').addEventListener('click', event => {
 		app.calls = json;
 	});
 });
+
+function filterCallingRecords(filterId) {
+	let url = '/calls/filterByRuleSet/' + filterId;
+	fetch(url, {
+		method: 'post'
+	})
+	.then( response => response.json())
+	.then( json => {
+		app.calls = json;
+	});
+};
+
+document.getElementById('btnFilterLgCo').addEventListener('click', event => {
+	event.preventDefault();
+	const filterId = event.target.dataset.filterid;
+	filterCallingRecords(filterId);
+});
+
+document.getElementById('btnFilterAmOnPrem').addEventListener('click', event => {
+	event.preventDefault();
+	const filterId = event.target.dataset.filterid;
+	filterCallingRecords(filterId);
+});
