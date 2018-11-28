@@ -12,7 +12,7 @@ public class CallTest {
 
 	@Test
 	public void testCallDateIsPopulated() {
-		Call c = new Call();
+		Call c = new Call(1l);
 		assertNotNull(c.getCallTime());
 	}
 
@@ -30,13 +30,13 @@ public class CallTest {
 
 	@Test
 	public void testEmptyProductSet() {
-		Call c = new Call();
+		Call c = new Call(1l);
 		assertEquals(0l, c.getProducts().getNumProducts());
 	}
 
 	@Test
 	public void testAddProduct() {
-		Call c = new Call();
+		Call c = new Call(1l);
 		c.getProducts().addProduct(Products.EC2_INSTANCES);
 		c.getProducts().addProduct(Products.EC2_INSTANCES);
 		c.getProducts().addProduct(Products.EC2_INSTANCES);

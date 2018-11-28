@@ -23,11 +23,9 @@
       </div>
     </div>
     <!-- call list -->
-    <ul>
-      <li th:each="call: ${calls}">
-        <span th:text="${call.callTime}"></span>
-      </li>
-    </ul>
+	<div class="callList"></div>
   </div>
+  
+  <script src="js/calls.js"></script>
 </body>
 </html>
