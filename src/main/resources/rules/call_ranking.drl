@@ -1,0 +1,11 @@
+import io.datura.java.drools.calltest.data.Call;
+import io.datura.java.drools.calltest.data.CallerDemographics;
+dialect "java"
+
+rule "Example Rule"
+	when
+		$c : Call()
+		$d : CallerDemographics( firstName == "George" )
+	then
+		$c.setCallRank(Call.CallRank.FULLY_QUALIFIED);
+end
