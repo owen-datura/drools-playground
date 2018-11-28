@@ -17,6 +17,7 @@ import io.datura.java.drools.calltest.data.CallerProducts;
 public class CallDAOService {
 	private static Collection<Call> loadedCalls = new ArrayList<>();
 
+	/* Manually define some data. */
 	static {
 		loadedCalls = setDefaultData();
 	}
@@ -117,10 +118,5 @@ public class CallDAOService {
 		}
 		
 		return calls;
-	}
-	
-	/* Manually define some data. */
-	static {
-		
 	}
 }
