@@ -33,7 +33,7 @@
 	  <div class="list-group">
 	    <a href="#" v-for="call in calls" 
 	    	class="list-group-item list-group-item-action flex-column align-items-start"
-	    	v-bind:class="{ 'list-group-item-danger': call.callRank === 'UNQUALIFIED'}">
+	    	v-bind:class="{ 'list-group-item-danger': call.callRank === 'UNQUALIFIED', 'list-group-item-success': call.callRank === 'FULLY_QUALIFIED', 'list-group-item-info': call.callRank === 'UPSELL_VIRTUAL_MACHINES'}">
 	      <div class="d-flex w-100 justify-content-between">
 	        <!-- show the caller's name -->
 	        <h5 class="mb-1">{{call.callerDemo.lastName}}, {{call.callerDemo.firstName}}</h5>
