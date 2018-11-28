@@ -15,14 +15,22 @@ import io.datura.java.drools.calltest.data.CallerProducts;
 
 @Service
 public class CallDAOService {
-	private static Collection<Call> calls = new ArrayList<>();
+	private static Collection<Call> loadedCalls = new ArrayList<>();
 
+	static {
+		loadedCalls = setDefaultData();
+	}
+	
 	public Collection<Call> getAllCalls() {
-		return Collections.unmodifiableCollection(calls);
+		return Collections.unmodifiableCollection(loadedCalls);
 	}
 
-	/* Manually define some data. */
-	static {
+	public void resetCallData() {
+		loadedCalls = setDefaultData();
+	}
+	
+	private static Collection<Call> setDefaultData() {
+		Collection<Call> calls = new ArrayList<>();
 		long curId = 1l;
 
 		{
@@ -107,5 +115,12 @@ public class CallDAOService {
 			cp5.addProduct(Products.ON_PREM_SERVERS);
 			calls.add(c5);
 		}
+		
+		return calls;
+	}
+	
+	/* Manually define some data. */
+	static {
+		
 	}
 }

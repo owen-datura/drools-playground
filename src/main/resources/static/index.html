@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <title>Drools Evaluation Test - datura.io</title>
+</head>
+<body>
+  <div class="container">
+  	<!-- title -->
+    <div class="row">
+      <div class="col mt-4">
+        <h1>Drools Evaluation</h1>
+      </div>
+    </div>
+    <!-- explanation -->
+    <div class="row">
+      <div class="col-9">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ipsum quam, pellentesque sit amet justo in, rhoncus iaculis nunc. Nam.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col mb-3">
+	    <button type="button" class="btn btn-dark">Large Company with Networking</button>
+	    <button type="button" class="btn btn-dark">American Companies with On-Prem Servers</button>
+	    <button type="button" class="btn btn-danger" id="btnCallReset">Reset</button>
+      </div>
+    </div>
+    <!-- call list -->
+	<div id="app">
+	  <div class="list-group">
+	    <a href="#" v-for="call in calls" 
+	    	class="list-group-item list-group-item-action flex-column align-items-start"
+	    	v-bind:class="{ 'list-group-item-danger': call.callRank === 'UNQUALIFIED'}">
+	      <div class="d-flex w-100 justify-content-between">
+	        <!-- show the caller's name -->
+	        <h5 class="mb-1">{{call.callerDemo.lastName}}, {{call.callerDemo.firstName}}</h5>
+	        <small>
+	          {{call.callRank}}
+	        </small>
+	      </div>
+	      <div class="d-flex">
+	      	<small class="text-muted">{{call.callerDemo.callingRegion}}</small>
+	      </div>
+	      <div>
+	        <ul>
+	          <li v-for="product in call.products.ownedProducts">{{product}}</li>
+	        </ul>
+	      </div>
+	    </a>
+	  </div>
+	</div>
+  </div>
+
+  <script src="//unpkg.com/vue"></script>
+  <script src="js/calls.js"></script>
+</body>
+</html>
