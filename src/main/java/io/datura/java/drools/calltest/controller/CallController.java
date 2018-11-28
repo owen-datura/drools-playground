@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,8 +27,8 @@ public class CallController {
 		return callService.getAllCalls();
 	}
 	
-	@PostMapping(path="/calls/filterByRuleSet/{filterId}")
-	public Collection<Call> filterByRuleSet(@PathVariable int filterId) {
+	@PostMapping(path="/calls/filterByRuleSet")
+	public Collection<Call> filterByRuleSet() {
 		callService.resetCallData();
 		
 		for( Call c : callService.getAllCalls()) {
